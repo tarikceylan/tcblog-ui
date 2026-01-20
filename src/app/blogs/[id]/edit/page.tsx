@@ -11,9 +11,9 @@ export const EditBlogPage = async ({
   const blog = await getBlogById(id);
 
   return (
-    <main>
+    <main className='flex flex-col items-center justify-center gap-2'>
       <h1>Update Blog</h1>
-      <form action={updateBlogAction} className='flex flex-col gap-2'>
+      <form action={updateBlogAction} className='flex flex-col gap-2 w-3/4'>
         <input type='hidden' name='_id' value={id} />
         <input
           name='title'
@@ -36,7 +36,10 @@ export const EditBlogPage = async ({
           defaultValue={blog.tags.join(', ')}
           required
         ></input>
-        <button type='submit' className='p-2 border'>
+        <button
+          type='submit'
+          className='p-2 border hover:text-white hover:bg-stone-800 ease-in duration-250'
+        >
           Update
         </button>
       </form>
