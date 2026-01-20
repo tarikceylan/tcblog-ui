@@ -1,3 +1,6 @@
+import { BlogSchema, LoginSchema } from '@/lib/validations';
+import * as z from 'zod';
+
 export interface IBlog {
   _id: string;
   title: string;
@@ -21,3 +24,6 @@ export interface IAuthContext {
 export type IActionState = {
   error?: string;
 } | null;
+
+export type BlogSchemaType = z.infer<typeof BlogSchema>;
+export type LoginSchemaType = z.infer<typeof LoginSchema>;

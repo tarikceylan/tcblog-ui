@@ -1,7 +1,7 @@
-import { IBlog } from '@/types';
+import { BlogSchemaType, IBlog } from '@/types';
 import { makeRequest } from '@/lib';
 
-export const createBlog = async (blog: IBlog) => {
+export const createBlog = async (blog: BlogSchemaType) => {
   const response = await makeRequest(`blogs`, {
     method: 'POST',
     body: JSON.stringify(blog),
@@ -26,7 +26,7 @@ export const getBlogById = async (id: string): Promise<IBlog> => {
   return response.json();
 };
 
-export const updateBlog = async (id: string, blog: IBlog) => {
+export const updateBlog = async (id: string, blog: BlogSchemaType) => {
   const response = await makeRequest(`blogs/${id}`, {
     method: 'PUT',
     body: JSON.stringify(blog),

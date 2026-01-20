@@ -5,13 +5,13 @@ import { useActionState } from 'react';
 
 const LoginPage = () => {
   const [state, formAction, isPending] = useActionState(loginUserAction, null);
-
   return (
     <div>
       <form action={formAction} className='flex flex-col gap-2 w-3xs'>
         <input
           className='border p-2'
           name='email'
+          type='email'
           placeholder='Email'
           required
         ></input>

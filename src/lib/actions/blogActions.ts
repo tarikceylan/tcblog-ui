@@ -2,15 +2,25 @@
 
 import { redirect } from 'next/navigation';
 import { createBlog, deleteBlog, updateBlog } from '@/lib/services';
-import { IBlog } from '@/types';
+import { BlogSchemaType, IActionState, IBlog } from '@/types';
 import { revalidatePath } from 'next/cache';
+import { BlogSchema } from '../validations/blog';
 
-export const createBlogAction = async (formData: FormData) => {
+export const createBlogAction = async (
+  prevState: IActionState,
+  formData: FormData,
+) => {
   const rawData = {
     title: formData.get('title'),
     body: formData.get('body'),
     tags: formData.get('tags')?.toString().trim().split(',') || [],
   } as IBlog;
+
+  const validationResult = BlogSchema.safeParse(rawData);
+
+  if (!validationResult.success) {
+    return { error: `Invalid Input${validationResult.error.message}` };
+  }
 
   await createBlog(rawData);
 
@@ -18,7 +28,10 @@ export const createBlogAction = async (formData: FormData) => {
   redirect('/');
 };
 
-export const updateBlogAction = async (formData: FormData) => {
+export const updateBlogAction = async (
+  prevState: IActionState,
+  formData: FormData,
+) => {
   const id = formData.get('_id') as string;
 
   const rawData = {
@@ -30,9 +43,19 @@ export const updateBlogAction = async (formData: FormData) => {
         ?.toString()
         .split(',')
         .map((tag) => tag.trim()) || [],
-  } as IBlog;
+  } as BlogSchemaType;
 
-  await updateBlog(id, rawData);
+  const validationResult = BlogSchema.safeParse(rawData);
+
+  if (!validationResult.success) {
+    return { error: `Invalid Input${validationResult.error.issues}` };
+  }
+
+  try {
+    await updateBlog(id, rawData);
+  } catch (error) {
+    return { error: `Failed to update blog${error}` };
+  }
 
   revalidatePath('/');
   revalidatePath(`/blogs/${id}`);

@@ -1,19 +1,26 @@
 'use server';
 
-import { IActionState, IUser } from '@/types';
+import { IActionState, LoginSchemaType } from '@/types';
 import { loginUser } from '../services/user.service';
 import { redirect } from 'next/navigation';
 import { extractTokenFromResponse } from '../auth.server';
 import { cookies } from 'next/headers';
+import { LoginSchema } from '../validations/auth';
 
 export const loginUserAction = async (
   prevState: IActionState,
-  formData: FormData
+  formData: FormData,
 ) => {
   const rawData = {
     email: formData.get('email'),
     password: formData.get('password'),
-  } as IUser;
+  } as LoginSchemaType;
+
+  const validationResult = LoginSchema.safeParse(rawData);
+
+  if (!validationResult.success) {
+    return { error: `Invalid Input${validationResult.error.issues}` };
+  }
 
   try {
     const response = await loginUser(rawData);
