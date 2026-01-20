@@ -1,9 +1,14 @@
-import { loginUserAction } from '@/lib/actions/userActions';
+'use client';
 
-export const LoginPage = () => {
+import { loginUserAction } from '@/lib/actions/userActions';
+import { useActionState } from 'react';
+
+const LoginPage = () => {
+  const [state, formAction, isPending] = useActionState(loginUserAction, null);
+
   return (
     <div>
-      <form action={loginUserAction} className='flex flex-col gap-2 w-3xs'>
+      <form action={formAction} className='flex flex-col gap-2 w-3xs'>
         <input
           className='border p-2'
           name='email'
@@ -17,7 +22,10 @@ export const LoginPage = () => {
           placeholder='Password'
           required
         ></input>
-        <button type='submit'>Login</button>
+        {state?.error && <p className='text-red-500 text-sm'>{state.error}</p>}
+        <button type='submit' disabled={isPending}>
+          {isPending ? 'Logging in...' : 'Login'}
+        </button>
       </form>
     </div>
   );

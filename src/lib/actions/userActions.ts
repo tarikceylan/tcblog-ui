@@ -1,12 +1,15 @@
 'use server';
 
-import { IUser } from '@/types';
+import { IActionState, IUser } from '@/types';
 import { loginUser } from '../services/user.service';
 import { redirect } from 'next/navigation';
 import { extractTokenFromResponse } from '../auth.server';
 import { cookies } from 'next/headers';
 
-export const loginUserAction = async (formData: FormData) => {
+export const loginUserAction = async (
+  prevState: IActionState,
+  formData: FormData
+) => {
   const rawData = {
     email: formData.get('email'),
     password: formData.get('password'),

@@ -17,3 +17,7 @@ export interface IUser {
 export interface IAuthContext {
   user: IUser | null;
 }
+
+export type IActionState = {
+  error?: string;
+} | null;
