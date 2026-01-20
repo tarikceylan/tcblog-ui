@@ -12,23 +12,29 @@ export const loginUserAction = async (formData: FormData) => {
     password: formData.get('password'),
   } as IUser;
 
-  const response = await loginUser(rawData);
+  try {
+    const response = await loginUser(rawData);
 
-  if (!response.ok) {
-    throw new Error(`Invalid credentials`);
-  }
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      return { error: errorData.message || 'Invalid email or password.' };
+    }
 
-  const token = await extractTokenFromResponse(response);
+    const token = await extractTokenFromResponse(response);
 
-  if (token) {
-    const cookieStore = await cookies();
+    if (token) {
+      const cookieStore = await cookies();
 
-    cookieStore.set('access-token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
-    });
+      cookieStore.set('access-token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/',
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    return { error: 'Something went wrong. Please try again later.' };
   }
 
   redirect('/');

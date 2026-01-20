@@ -7,7 +7,7 @@ export const extractTokenFromResponse = async (response: Response) => {
   const setCookieHeader = response.headers.get('Set-Cookie');
 
   if (!setCookieHeader) {
-    return `Something went wrong`;
+    return null;
   }
 
   const token = setCookieHeader.split('=')[1].split(';')[0];

@@ -20,15 +20,15 @@ export const makeRequest = async (
     throw new Error(`Invalid API URL`);
   }
 
-  const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
-    credentials: 'include',
-    ...options,
-    headers: headers,
-  });
+  try {
+    const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
+      credentials: 'include',
+      ...options,
+      headers: headers,
+    });
 
-  if (!response) {
-    throw new Error(`Something went wrong`);
+    return response;
+  } catch (error) {
+    throw error;
   }
-
-  return response;
 };
