@@ -7,6 +7,7 @@ export interface IBlog {
   body: string;
   author: string;
   tags: string[];
+  updatedAt: Date;
 }
 
 export interface IUser {

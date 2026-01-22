@@ -10,7 +10,7 @@ export default async function EditBlogPage({
   const blog = await getBlogById(id);
 
   return (
-    <main className='flex flex-col items-center justify-center gap-2'>
+    <main>
       <h1>Update Blog</h1>
       <EditBlogForm blog={blog} id={id} />
     </main>

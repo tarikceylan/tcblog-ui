@@ -2,9 +2,17 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { getSessionInfo } from '@/lib/auth.server';
+import { Ubuntu } from 'next/font/google';
+
+const roboto = Ubuntu({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-ubuntu',
+  weight: '400',
+});
 
 export const metadata: Metadata = {
-  title: 'TCBlog | tarikceylan',
+  title: 'Blog | tarikceylan',
   description: 'TCBlog | Weekly Web Development Articles',
 };
 
@@ -18,8 +26,9 @@ export const RootLayout = async ({
   const user = await getSessionInfo();
 
   return (
-    <html lang='en'>
-      <body>
+    <html lang='en' className={`${roboto.variable}`}>
+      <link rel='icon' href='/icon.svg' sizes='any' />
+      <body className='font-ubuntu bg-neutral-900 text-neutral-200'>
         <AuthProvider initialUser={user}>{children}</AuthProvider>
       </body>
     </html>

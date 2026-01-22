@@ -1,5 +1,12 @@
 @import 'tailwindcss';
 
-@theme {
-  --color-black: #000000;
+@theme inline {
+  --font-ubuntu: var(--font-ubuntu);
+}
+
+@layer components {
+  a:hover,
+  button:hover {
+    @apply text-white underline duration-200;
+  }
 }
