@@ -1,7 +1,7 @@
 'use client';
 import { useAuth } from '@/contexts/AuthContext';
 import { deleteBlogAction } from '@/lib/actions';
-import { formatDate } from '@/lib/utils';
+import { formatDate } from '@/lib/utils/utils';
 import { IBlog } from '@/types';
 import Link from 'next/link';
 import { useTransition } from 'react';

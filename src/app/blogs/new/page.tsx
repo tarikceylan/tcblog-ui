@@ -8,8 +8,8 @@ export const CreateBlogPage = () => {
   return (
     <main className='flex flex-col items-center justify-center gap-2'>
       <h1>Create New Blog</h1>
-      <form action={formAction} className='flex flex-col gap-2 w-3/4'>
-        {state?.error && <p className='text-red-500 text-sm'>{state.error}</p>}
+      <form action={formAction} className='flex flex-col w-3/4 gap-2'>
+        {state?.error && <p className='text-sm text-red-500'>{state.error}</p>}
 
         <input
           name='title'
@@ -20,7 +20,7 @@ export const CreateBlogPage = () => {
         <textarea
           name='body'
           placeholder='Share your thoughts...'
-          className='p-2 border'
+          className='p-2 border min-h-50'
           required
         ></textarea>
         <input

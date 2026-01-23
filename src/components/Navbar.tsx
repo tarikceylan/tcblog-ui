@@ -17,19 +17,19 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className='flex justify-between w-full h-14 p-2 gap-2 shadow-sm shadow-neutral-700'>
-      <div className='flex items-center p-2 gap-2'>
+    <nav className='flex justify-between w-full gap-2 p-2 shadow-sm h-14 shadow-neutral-700'>
+      <div className='flex items-center gap-2 p-2'>
         <Image src='/icon.svg' width={32} height={32} alt='blog-logo' />
         Blog<span>|</span>
       </div>
 
       {user && (
         <>
-          <div className='flex w-full justify-between'>
-            <div className='flex justify-center items-center'>
+          <div className='flex justify-between w-full'>
+            <div className='flex items-center justify-center'>
               <Link href='/blogs/new'>Create New Blog</Link>
             </div>
-            <div className='flex gap-2 justify-center items-center'>
+            <div className='flex items-center justify-center gap-2'>
               <span>{user.username}</span>
               <button
                 className='cursor-pointer'
