@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Navbar } from '@/components';
 
 export const BlogNavigationLayout = ({
   children,
@@ -7,9 +7,7 @@ export const BlogNavigationLayout = ({
 }) => {
   return (
     <>
-      <nav className='w-screen h-10 p-2'>
-        <Link href={`/`}>&lt; Back to Home</Link>
-      </nav>
+      <Navbar />
       {children}
     </>
   );

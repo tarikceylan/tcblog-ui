@@ -16,8 +16,7 @@ export const BlogCard = ({
 }: IBlog) => {
   const { user } = useAuth();
   const [isPending, startTransition] = useTransition();
-  const lastUpdateDate = new Date(updatedAt);
-  const formattedDate = formatDate(lastUpdateDate);
+  const formattedDate = formatDate(updatedAt);
 
   const handleDeleteButtonClick = async () => {
     if (confirm('Are you sure?')) {
@@ -49,7 +48,7 @@ export const BlogCard = ({
         <p className='py-2'>{body}</p>
       </div>
       <div>
-        <p className='text-neutral-400'>
+        <p className='text-neutral-500'>
           {author} · {formattedDate}
         </p>
       </div>
