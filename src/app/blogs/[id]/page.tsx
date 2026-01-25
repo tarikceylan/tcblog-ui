@@ -19,8 +19,8 @@ export const BlogPage = async ({
       </section>
       <section className='flex flex-col w-2/3'>
         <article>
-          <p className='text-neutral-500'>{`Published by ${blog.author} on ${formattedDate}`}</p>
-          <h2 className='my-5 text-6xl'>{blog.title}</h2>
+          <h2 className='text-6xl'>{blog.title}</h2>
+          <p className='mt-2 mb-5 text-neutral-500'>{`Published by ${blog.author} on ${formattedDate}`}</p>
           <p>{blog.body}</p>
         </article>
       </section>
