@@ -2,11 +2,7 @@ import { getBlogById } from '@/lib/services';
 import { formatDate } from '@/lib/utils/utils';
 import Link from 'next/link';
 
-export const BlogPage = async ({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) => {
+const BlogPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
 
   const blog = await getBlogById(id);

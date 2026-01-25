@@ -1,11 +1,11 @@
 import { getBlogById } from '@/lib/services';
 import { EditBlogForm } from '@/components/EditBlogForm';
 
-export default async function EditBlogPage({
+const EditBlogPage = async ({
   params,
 }: {
   params: Promise<{ id: string }>;
-}) {
+}) => {
   const { id } = await params;
   const blog = await getBlogById(id);
 
@@ -15,4 +15,6 @@ export default async function EditBlogPage({
       <EditBlogForm blog={blog} id={id} />
     </main>
   );
-}
+};
+
+export default EditBlogPage;

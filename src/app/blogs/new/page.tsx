@@ -3,7 +3,7 @@
 import { createBlogAction } from '@/lib/actions/';
 import { useActionState } from 'react';
 
-export const CreateBlogPage = () => {
+const CreateBlogPage = () => {
   const [state, formAction, isPending] = useActionState(createBlogAction, null);
   return (
     <main className='flex flex-col items-center justify-center gap-2'>

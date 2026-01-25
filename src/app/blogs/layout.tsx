@@ -1,10 +1,6 @@
 import { Navbar } from '@/components';
 
-export const BlogNavigationLayout = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+const BlogNavigationLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Navbar />

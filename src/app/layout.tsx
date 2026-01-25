@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
-export const RootLayout = async ({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
