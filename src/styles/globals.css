@@ -13,4 +13,11 @@
   button:hover {
     @apply text-white underline duration-200;
   }
+
+  .prose :not(pre) > code::before,
+  .prose :not(pre) > code::after,
+  .prose-invert :not(pre) > code::before,
+  .prose-invert :not(pre) > code::after {
+    content: none !important;
+  }
 }
