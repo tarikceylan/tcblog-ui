@@ -18,10 +18,10 @@ export const Navbar = () => {
 
   return (
     <nav className='flex justify-between w-full gap-2 p-2 shadow-sm h-14 shadow-neutral-700'>
-      <div className='flex items-center gap-2 p-2'>
+      <Link href={'/'} className='flex items-center gap-2 p-2'>
         <Image src='/icon.svg' width={32} height={32} alt='blog-logo' />
         Blog<span>|</span>
-      </div>
+      </Link>
 
       {user && (
         <>

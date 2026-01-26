@@ -1,5 +1,6 @@
 'use client';
 
+import TextEditor from '@/components/TextEditor';
 import { createBlogAction } from '@/lib/actions/';
 import { useActionState } from 'react';
 
@@ -17,15 +18,10 @@ const CreateBlogPage = () => {
           className='p-2 border'
           required
         ></input>
-        <textarea
-          name='body'
-          placeholder='Share your thoughts...'
-          className='p-2 border min-h-50'
-          required
-        ></textarea>
+        <TextEditor />
         <input
           name='tags'
-          placeholder='tags'
+          placeholder='Tags (Example: front-end, javascript, HTML)'
           className='p-2 border'
           required
         ></input>

@@ -1,6 +1,6 @@
 'use server';
 
-import { IActionState, LoginSchemaType } from '@/types';
+import { ActionState, LoginSchemaType } from '@/types';
 import { loginUser } from '../services/user.service';
 import { redirect } from 'next/navigation';
 import { extractTokenFromResponse } from '../auth.server';
@@ -8,7 +8,7 @@ import { cookies } from 'next/headers';
 import { LoginSchema } from '../validations/auth';
 
 export const loginUserAction = async (
-  prevState: IActionState,
+  prevState: ActionState,
   formData: FormData,
 ) => {
   const rawData = {

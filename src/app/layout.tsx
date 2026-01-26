@@ -28,7 +28,10 @@ const RootLayout = async ({
   return (
     <html lang='en' className={`${roboto.variable}`}>
       <link rel='icon' href='/icon.svg' />
-      <body className='font-ubuntu bg-neutral-900 text-neutral-200'>
+      <body
+        data-color-mode='dark'
+        className='font-ubuntu bg-neutral-900 text-neutral-200'
+      >
         <AuthProvider initialUser={user}>{children}</AuthProvider>
       </body>
     </html>

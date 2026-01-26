@@ -1,0 +1,40 @@
+/* Main editor container */
+.w-md-editor {
+  background-color: var(--color-neutral-800) !important;
+  border: 1px solid var(--color-neutral-800);
+}
+
+/* Toolbar */
+.w-md-editor-toolbar {
+  min-height: 48px;
+  background-color: var(--color-neutral-900) !important;
+  border: 1px solid var(--color-neutral-800);
+}
+
+/* Textarea (edit mode) */
+.w-md-editor-text {
+  background-color: var(--color-neutral-800) !important;
+  color: var(--color-neutral-200);
+}
+
+/* Preview panel */
+.w-md-editor-preview {
+  background-color: var(--color-neutral-800) !important;
+  color: var(--color-neutral-200);
+}
+
+/* Preview Text */
+.w-md-editor-preview > * {
+  background-color: var(--color-neutral-800) !important;
+  color: var(--color-neutral-200);
+}
+
+/* Split view divider */
+.w-md-editor-bar {
+  background-color: var(--color-neutral-800);
+}
+
+/* Remove default focus outline */
+.w-md-editor:focus-within {
+  box-shadow: 0 0 0 1px var(--color-neutral-800);
+}

@@ -1,6 +1,9 @@
 import { getBlogById } from '@/lib/services';
 import { formatDate } from '@/lib/utils/utils';
 import Link from 'next/link';
+import Markdown from 'react-markdown';
+import rehypeSanitize from 'rehype-sanitize';
+import remarkGfm from 'remark-gfm';
 
 const BlogPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -17,7 +20,14 @@ const BlogPage = async ({ params }: { params: Promise<{ id: string }> }) => {
         <article>
           <h2 className='text-6xl'>{blog.title}</h2>
           <p className='mt-2 mb-5 text-neutral-500'>{`Published by ${blog.author} on ${formattedDate}`}</p>
-          <p>{blog.body}</p>
+          <div className='w-full overflow-hidden prose prose-invert wrap-break-word max-w-none'>
+            <Markdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeSanitize]}
+            >
+              {blog.body}
+            </Markdown>
+          </div>
         </article>
       </section>
     </main>

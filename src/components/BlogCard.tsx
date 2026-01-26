@@ -1,7 +1,7 @@
 'use client';
 import { useAuth } from '@/contexts/AuthContext';
 import { deleteBlogAction } from '@/lib/actions';
-import { formatDate } from '@/lib/utils/utils';
+import { formatDate, markdownToPlainText } from '@/lib/utils/utils';
 import { IBlog } from '@/types';
 import Link from 'next/link';
 import { useTransition } from 'react';
@@ -26,8 +26,10 @@ export const BlogCard = ({
     }
   };
 
+  const previewBodyText = markdownToPlainText(body);
+
   return (
-    <article className='border-b-2 p-5 border-neutral-300 hover:bg-[#1d1d1d] rounded-2xl duration-300'>
+    <article className='border-b-2 p-5 border-neutral-300 hover:bg-[#1d1d1d] rounded-2xl duration-300 w-full '>
       <div>
         <Link href={`/blogs/${_id}`}>
           <h2 className='mb-5 text-4xl duration-300 hover:underline'>
@@ -35,7 +37,7 @@ export const BlogCard = ({
           </h2>
         </Link>
       </div>
-      <div className='flex gap-2'>
+      <div className='flex gap-2 '>
         {tags.map((tag, idx) => {
           return (
             <span key={idx} className='px-2 border w-fit'>
@@ -44,8 +46,8 @@ export const BlogCard = ({
           );
         })}
       </div>
-      <div>
-        <p className='py-2'>{body}</p>
+      <div className='py-2 overflow-hidden'>
+        <p className='leading-normal line-clamp-4'>{previewBodyText}</p>
       </div>
       <div>
         <p className='text-neutral-500'>

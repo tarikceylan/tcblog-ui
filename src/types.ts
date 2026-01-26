@@ -22,7 +22,7 @@ export interface IAuthContext {
   user: IUser | null;
 }
 
-export type IActionState = {
+export type ActionState = {
   error?: string;
 } | null;
 

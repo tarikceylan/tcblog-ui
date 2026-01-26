@@ -2,12 +2,12 @@
 
 import { redirect } from 'next/navigation';
 import { createBlog, deleteBlog, updateBlog } from '@/lib/services';
-import { BlogSchemaType, IActionState, IBlog } from '@/types';
+import { BlogSchemaType, ActionState, IBlog } from '@/types';
 import { revalidatePath } from 'next/cache';
 import { BlogSchema } from '../validations/blog';
 
 export const createBlogAction = async (
-  prevState: IActionState,
+  prevState: ActionState,
   formData: FormData,
 ) => {
   const rawData = {
@@ -29,7 +29,7 @@ export const createBlogAction = async (
 };
 
 export const updateBlogAction = async (
-  prevState: IActionState,
+  prevState: ActionState,
   formData: FormData,
 ) => {
   const id = formData.get('_id') as string;
