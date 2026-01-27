@@ -8,6 +8,7 @@ export interface IBlog {
   author: string;
   tags: string[];
   updatedAt: Date;
+  hidden: boolean;
 }
 
 export interface IUser {

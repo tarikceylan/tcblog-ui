@@ -25,6 +25,12 @@ const CreateBlogPage = () => {
           className='p-2 border'
           required
         ></input>
+        <div>
+          <input type='checkbox' name='is_draft'></input>
+          <label htmlFor='is_draft' className='px-2'>
+            Post as Draft?
+          </label>
+        </div>
         <button
           type='submit'
           disabled={isPending}

@@ -14,6 +14,7 @@ export const createBlogAction = async (
     title: formData.get('title'),
     body: formData.get('body'),
     tags: formData.get('tags')?.toString().trim().split(',') || [],
+    hidden: formData.get('is_draft') === 'on',
   } as IBlog;
 
   const validationResult = BlogSchema.safeParse(rawData);
