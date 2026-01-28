@@ -4,5 +4,5 @@ export const BlogSchema = z.object({
   title: z.string(),
   body: z.string(),
   tags: z.array(z.string()),
-  hidden: z.boolean(),
+  hidden: z.boolean().optional(),
 });

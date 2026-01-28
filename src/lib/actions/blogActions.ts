@@ -44,12 +44,13 @@ export const updateBlogAction = async (
         ?.toString()
         .split(',')
         .map((tag) => tag.trim()) || [],
+    hidden: formData.get('is_draft') === 'on',
   } as BlogSchemaType;
 
   const validationResult = BlogSchema.safeParse(rawData);
 
   if (!validationResult.success) {
-    return { error: `Invalid Input${validationResult.error.issues}` };
+    return { error: `Invalid Input${validationResult.error}` };
   }
 
   try {

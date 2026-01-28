@@ -27,5 +27,9 @@ export type ActionState = {
   error?: string;
 } | null;
 
+export interface ITextEditorProps {
+  currentValue: string;
+}
+
 export type BlogSchemaType = z.infer<typeof BlogSchema>;
 export type LoginSchemaType = z.infer<typeof LoginSchema>;
