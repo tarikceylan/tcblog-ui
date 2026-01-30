@@ -31,5 +31,13 @@ export interface ITextEditorProps {
   currentValue: string;
 }
 
+export interface IBlogFormProps {
+  blog?: IBlog;
+  blogAction: (
+    prevState: ActionState,
+    formData: FormData,
+  ) => Promise<{ error: string }>;
+}
+
 export type BlogSchemaType = z.infer<typeof BlogSchema>;
 export type LoginSchemaType = z.infer<typeof LoginSchema>;

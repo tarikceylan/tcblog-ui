@@ -1,3 +1,5 @@
+'use client';
+
 import { ITextEditorProps } from '@/types';
 import MDEditor from '@uiw/react-md-editor';
 import { useState } from 'react';

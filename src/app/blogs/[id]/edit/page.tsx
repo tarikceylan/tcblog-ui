@@ -1,6 +1,7 @@
 import { getBlogById } from '@/lib/services';
-import { EditBlogForm } from '@/components/EditBlogForm';
 import Link from 'next/link';
+import BlogForm from '@/components/BlogForm';
+import { updateBlogAction } from '@/lib/actions';
 
 const EditBlogPage = async ({
   params,
@@ -16,9 +17,7 @@ const EditBlogPage = async ({
         <Link href={`/`}>&lt; Back </Link>
       </section>
       <h1 className='text-4xl'>Update Blog</h1>
-      <section className='w-2/3'>
-        <EditBlogForm blog={blog} id={id} />
-      </section>
+      <BlogForm blogAction={updateBlogAction} blog={blog} />
     </main>
   );
 };
