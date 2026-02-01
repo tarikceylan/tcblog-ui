@@ -19,7 +19,7 @@ export const loginUserAction = async (
   const validationResult = LoginSchema.safeParse(rawData);
 
   if (!validationResult.success) {
-    return { error: `Invalid Input${validationResult.error.issues}` };
+    return { error: `Invalid Input${validationResult.error.message}` };
   }
 
   try {

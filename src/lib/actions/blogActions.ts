@@ -4,7 +4,8 @@ import { redirect } from 'next/navigation';
 import { createBlog, deleteBlog, updateBlog } from '@/lib/services';
 import { BlogSchemaType, ActionState, IBlog } from '@/types';
 import { revalidatePath } from 'next/cache';
-import { BlogSchema } from '../validations/blog';
+import { BlogSchema } from '@/lib/validations';
+import { extractValidationErrorMessage } from '@/lib/utils';
 
 export const createBlogAction = async (
   prevState: ActionState,
@@ -20,7 +21,9 @@ export const createBlogAction = async (
   const validationResult = BlogSchema.safeParse(rawData);
 
   if (!validationResult.success) {
-    return { error: `Invalid Input${validationResult.error.message}` };
+    return {
+      error: extractValidationErrorMessage(validationResult.error.issues),
+    };
   }
 
   await createBlog(rawData);
@@ -50,7 +53,9 @@ export const updateBlogAction = async (
   const validationResult = BlogSchema.safeParse(rawData);
 
   if (!validationResult.success) {
-    return { error: `Invalid Input${validationResult.error}` };
+    return {
+      error: extractValidationErrorMessage(validationResult.error.issues),
+    };
   }
 
   try {

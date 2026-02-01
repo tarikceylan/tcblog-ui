@@ -1,6 +1,7 @@
 import { remark } from 'remark';
 import remarkParse from 'remark-parse';
 import { visit } from 'unist-util-visit';
+import { $ZodIssue } from 'zod/v4/core';
 
 export const formatDate = (TZDate: Date) => {
   const date = new Date(TZDate);
@@ -12,7 +13,7 @@ export const formatDate = (TZDate: Date) => {
   }).format(date);
 };
 
-export function markdownToPlainText(markdown: string): string {
+export const markdownToPlainText = (markdown: string): string => {
   const tree = remark().use(remarkParse).parse(markdown);
   let text = '';
 
@@ -21,4 +22,8 @@ export function markdownToPlainText(markdown: string): string {
   });
 
   return text.trim();
-}
+};
+
+export const extractValidationErrorMessage = (issues: $ZodIssue[]) => {
+  return issues.map((issue) => issue.message).join(', ');
+};
