@@ -3,8 +3,12 @@ import { BlogsList, Navbar } from '@/components';
 const Home = () => {
   return (
     <>
-      <Navbar />
-      <BlogsList />
+      <div>
+        <Navbar />
+      </div>
+      <div>
+        <BlogsList />
+      </div>
     </>
   );
 };

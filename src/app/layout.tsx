@@ -12,8 +12,26 @@ const roboto = Ubuntu({
 });
 
 export const metadata: Metadata = {
-  title: 'Blog | tarikceylan',
-  description: 'TCBlog | Weekly Web Development Articles',
+  title: 'TCBlog',
+  description: 'tarikceylan | Personal Blog ',
+  icons: {
+    icon: '/icon.svg',
+  },
+  metadataBase: new URL('https://blog.tarikceylan.com'),
+  openGraph: {
+    title: 'TCBlog',
+    description: 'tarikceylan | Personal Blog',
+    images: [
+      {
+        url: '/og_thumbnail.png',
+        width: 400,
+        height: 400,
+        alt: 'TCBlog Logo',
+      },
+    ],
+    locale: 'en-us',
+    type: 'website',
+  },
 };
 
 export const dynamic = 'force-dynamic';
@@ -27,7 +45,6 @@ const RootLayout = async ({
 
   return (
     <html lang='en' className={`${roboto.variable}`}>
-      <link rel='icon' href='/icon.svg' />
       <body
         data-color-mode='dark'
         className='font-ubuntu bg-neutral-900 text-neutral-200'

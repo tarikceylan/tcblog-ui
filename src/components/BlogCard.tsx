@@ -32,22 +32,24 @@ export const BlogCard = ({
     <article className='border-b-2 p-5 border-neutral-300 hover:bg-[#1d1d1d] rounded-2xl duration-300 w-full '>
       <div>
         <Link href={`/blogs/${_id}`}>
-          <h2 className='mb-5 text-4xl duration-300 hover:underline'>
+          <h2 className='text-xl sm:text2xl md:text-4xl mb-5 font-semibold duration-300 hover:underline'>
             {title}
           </h2>
         </Link>
       </div>
-      <div className='flex gap-2 '>
+      <div className='sm:flex gap-2 hidden sm:w-fit'>
         {tags.map((tag, idx) => {
           return (
-            <span key={idx} className='px-2 border w-fit'>
+            <span key={idx} className='px-2 border'>
               {tag}
             </span>
           );
         })}
       </div>
       <div className='py-2 overflow-hidden'>
-        <p className='leading-normal line-clamp-4'>{previewBodyText}</p>
+        <p className='leading-normal line-clamp-4 text-sm sm:text-md md:text-lg'>
+          {previewBodyText}
+        </p>
       </div>
       <div>
         <p className='text-neutral-500'>

@@ -6,9 +6,9 @@ export const BlogsList = async () => {
   const blogs = await getActiveBlogs();
 
   return (
-    <main className='flex flex-col items-center gap-10 m-10'>
+    <main className='flex flex-col items-center gap-10 p-2'>
       <Hero />
-      <section className='flex flex-col items-center w-2/3 gap-2'>
+      <section className='flex flex-col items-center w-full md:w-2/3 gap-2'>
         {blogs.length ? (
           <>
             {blogs.map((blog) => {
